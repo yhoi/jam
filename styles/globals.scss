@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.bg-gradation{
+  background: linear-gradient(180deg, #5B59C1 0%, #8133CF 100%);
+}
