@@ -1,0 +1,26 @@
+.header{
+  background-color: #353535;
+  &-title{
+    padding: 12px 0 12px 40px;
+    &__icon{
+      margin-right: 0;
+      width: auto;
+      height: 32px;
+    }
+  }
+
+  &-content{
+    &__link{
+      margin-left: 3em;
+    }
+    &__btn{
+      color: #ffffff;
+      // TODO: importantを使わない方法で実装
+      background: linear-gradient(180deg, #5B59C1 0%, #8133CF 100%) !important;
+    }
+    &__icon{
+      display: flex;
+      height: 40px;
+    }
+  }
+}
