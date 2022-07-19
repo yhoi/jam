@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { state, meContext } from "../hooks/me";
 
+
 function MyApp({ Component, pageProps }) {
   const [meState, setMeState] = useState(state);
 
