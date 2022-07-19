@@ -1,0 +1,30 @@
+.login-sidebar{
+  // TODO:配置場所を明確にする
+  padding: 30% ;
+  
+  &__icon{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.login-area{
+  text-align: center;
+  padding: 20%;
+  &__title{
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  &__content{
+    margin-bottom: 30px;
+  }
+  &__fox{
+    margin: 0 auto;
+  }
+  &__btn{
+    color: #ffffff;
+    // TODO: importantを使わない方法で実装
+    background: linear-gradient(180deg, #5B59C1 0%, #8133CF 100%) !important;
+  }
+}
