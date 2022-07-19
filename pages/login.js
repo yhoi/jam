@@ -49,12 +49,6 @@ function GoogleLogin() {
         onClick={createGoogleAccount}>
         Googleでログイン
       </Button>
-      <Button
-        onClick={async () => {
-          await signOut(auth);
-        }}>
-        ログアウト
-      </Button>
     </GridItem>
   );
 }
@@ -74,12 +68,6 @@ function MetaMaskLogin() {
         className={`${styles["login-area__btn"]}  bg-gradation`}
         onClick={createGoogleAccount}>
         MetaMaskと連携する
-      </Button>
-      <Button
-        onClick={async () => {
-          await signOut(auth);
-        }}>
-        ログアウト
       </Button>
     </GridItem>
   );

@@ -8,10 +8,55 @@ import {
   Link,
   Button,
   Spacer,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
 } from "@chakra-ui/react";
 import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 import { meContext } from "../hooks/me";
 import styles from "../styles/components/Header.module.scss";
+
+function LoginIcon({ photoURL }) {
+  return (
+    <Menu>
+      <MenuButton>
+        <Image
+          borderRadius="full"
+          className={styles["header-content__icon"]}
+          src={photoURL}
+        />
+      </MenuButton>
+      <MenuList>
+        <MenuItem>
+          <a href="">プロフィール</a>
+        </MenuItem>
+        <MenuItem
+          onClick={async () => {
+            await signOut(auth);
+          }}>
+          <span>ログアウト</span>
+        </MenuItem>
+      </MenuList>
+    </Menu>
+  );
+}
+
+function UnLoginIcon({ photoURL }) {
+  return (
+    <Menu>
+      <Link href="/login">
+        <Image
+          borderRadius="full"
+          className={styles["header-content__icon"]}
+          src={photoURL}
+        />
+      </Link>
+    </Menu>
+  );
+}
 
 export default function Header() {
   const { meState } = useContext(meContext);
@@ -31,29 +76,25 @@ export default function Header() {
         <Box className={styles["header-content"]}>
           <Link
             className={styles["header-content__link"]}
-            color="#808080"
+            color="#fff"
             href="/">
             NFT
           </Link>
           <Link
             className={styles["header-content__link"]}
             color="#808080"
-            href="/login">
+            href="">
             コレクター
           </Link>
           <Button className={styles["header-content__btn"]}>
             NFTを出品する
           </Button>
         </Box>
-        <Box>
-          <Image
-            borderRadius="full"
-            className={styles["header-content__icon"]}
-            src={
-              meState.photoURL ? meState.photoURL : "img/header_user_icon.png"
-            }
-          />
-        </Box>
+        {meState.uid ? (
+          <LoginIcon photoURL={meState.photoURL} />
+        ) : (
+          <UnLoginIcon photoURL="img/header_user_icon.png" />
+        )}
       </Flex>
     </>
   );

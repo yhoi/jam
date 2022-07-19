@@ -1,25 +1,28 @@
 .header{
   background-color: #353535;
+  padding:12px 0 12px 0;
   &-title{
-    padding: 12px 0 12px 40px;
+    padding-left: 40px;
     &__icon{
       margin-right: 0;
       width: auto;
-      height: 32px;
+      height: 40px;
     }
   }
 
   &-content{
     &__link{
-      margin-left: 3em;
+      margin: 0 16px;
     }
     &__btn{
       color: #ffffff;
+      margin: 0 16px;
       // TODO: importantを使わない方法で実装
       background: linear-gradient(180deg, #5B59C1 0%, #8133CF 100%) !important;
     }
     &__icon{
       display: flex;
+      margin: 0 16px;
       height: 40px;
     }
   }
