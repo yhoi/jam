@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { GridItem, Button, Grid, Image, Text } from "@chakra-ui/react";
 import styles from "../styles/layout/login.module.scss";
+import { Connection } from "../components/Connection";
 
 const provider = new GoogleAuthProvider();
 
@@ -62,13 +63,9 @@ function MetaMaskLogin() {
       </Text>
       <Image
         className={`${styles["login-area__fox"]}`}
-        src="img/login_fox_icon.png"
+        src="/img/login_fox_icon.png"
       />
-      <Button
-        className={`${styles["login-area__btn"]}  bg-gradation`}
-        onClick={createGoogleAccount}>
-        MetaMaskと連携する
-      </Button>
+      <Connection />
     </GridItem>
   );
 }
