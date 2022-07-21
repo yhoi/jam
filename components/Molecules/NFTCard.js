@@ -1,22 +1,29 @@
 import { Box, Stack, Image, Text, Flex, HStack } from "@chakra-ui/react";
+import Router from "next/router";
 
-export default function NFTCard() {
+export default function NFTCard({ nft }) {
+  if (nft == null) return null;
+
   return (
     <>
-      <Box shadow="md" width="240px">
-        <Image src="img/NFT_Test.png" />
+      <Box
+        shadow="md"
+        width="240px"
+        cursor="pointer"
+        onClick={(e) => Router.push(`nft/${nft.id}`)}>
+        <Image src={nft.imageURL} />
         <Box>
-          <Text>title</Text>
+          <Text>{nft.title}</Text>
           <HStack>
             <Image
               height="16px"
-              src="img/login_fox_icon.png"
+              src={nft.creator.photoURL}
               borderRadius="full"
             />
-            <Text>作者名</Text>
+            <Text>{nft.creator.displayName}</Text>
           </HStack>
           <Box>
-            <Text>11円</Text>
+            <Text>{nft.price} Matic</Text>
           </Box>
         </Box>
       </Box>

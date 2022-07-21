@@ -1,9 +1,13 @@
 import { Box, Text, Input } from "@chakra-ui/react";
 import Head from "next/head";
 import NFTCard from "../components/Molecules/NFTCard";
+import NFTList from "../components/Organisms/NFTList";
 import styles from "../styles/layout/Home.module.scss";
+import { useNftList } from "../hooks/useNFTList";
 
 export default function Home() {
+  const { nftDocs } = useNftList();
+
   return (
     <div className="">
       <Head>
@@ -20,7 +24,7 @@ export default function Home() {
           placeholder="検索"
         />
       </Box>
-      <NFTCard />
+      <NFTList nftDocs={nftDocs} />
     </div>
   );
 }
