@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
+import Router from "next/router";
 import { auth } from "../firebase/firebase";
 import { meContext } from "../hooks/me";
 import styles from "../styles/components/Header.module.scss";
@@ -86,7 +87,12 @@ export default function Header() {
             href="">
             コレクター
           </Link>
-          <Button className={styles["header-content__btn"]}>
+          <Button
+            className={styles["header-content__btn"]}
+            onClick={() => {
+              if (meState.uid) Router.push("/create");
+              else Router.push("/login");
+            }}>
             NFTを出品する
           </Button>
         </Box>
