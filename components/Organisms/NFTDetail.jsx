@@ -2,6 +2,8 @@ import { Flex, Box, SimpleGrid, Image, Text } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
+import Mint from "../Mint";
+
 export default function NFTDetail({ nft }) {
   if (nft == null) return null;
 
@@ -39,6 +41,8 @@ export default function NFTDetail({ nft }) {
         <Flex>
           <Text>{`出品額 ${nft.price} Matic`}</Text>
         </Flex>
+
+        <Mint />
       </Box>
     </SimpleGrid>
   );
