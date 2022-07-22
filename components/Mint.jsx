@@ -4,24 +4,26 @@ import { ethers } from "ethers";
 import { CONTRACT_ADDRESS } from "./utils/constants";
 import RoyaltyNFT from "./utils/RoyaltyNFT.json";
 
-export default function Mint() {
+export default function Mint({ nft }) {
   const [jamContract, setJamContract] = useState(null);
+
+  if (nft == null) return null;
 
   // Maybe you need to delete characterId
   async function mintJamNFTAction() {
     try {
       if (jamContract) {
         // change Attribute
-        const royalty10Percent = 1000;
+        const royalty = nft.royalty * 100;
         let mintTxn;
         console.log("This is JamContract:", jamContract);
         // 商品名、画像のURL、ロイヤリティの値をユーザーから受け取ればオッケー
         mintTxn = await jamContract.mintJamNFT(
           "0xDfb5d126aCFBa7391f94a045FDAc08969Ea9B918",
           1,
-          "first",
-          "https://i.imgur.com/TZEhCTX.png",
-          royalty10Percent
+          nft.title,
+          nft.imageURL,
+          royalty
         );
         await mintTxn.wait();
         console.log("mint finish");

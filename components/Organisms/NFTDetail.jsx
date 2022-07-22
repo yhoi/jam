@@ -42,7 +42,7 @@ export default function NFTDetail({ nft }) {
           <Text>{`出品額 ${nft.price} Matic`}</Text>
         </Flex>
 
-        <Mint />
+        <Mint nft={nft} />
       </Box>
     </SimpleGrid>
   );
