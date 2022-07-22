@@ -61,7 +61,7 @@ function UnLoginIcon({ photoURL }) {
 
 export default function Header() {
   const { meState } = useContext(meContext);
-  console.log(meState);
+
   return (
     <>
       <Flex className={styles["header"]}>
@@ -69,7 +69,7 @@ export default function Header() {
           <Link href="/">
             <Image
               className={styles["header-title__icon"]}
-              src="img/header_icon.png"
+              src="/img/header_icon.png"
             />
           </Link>
         </Box>
@@ -99,7 +99,7 @@ export default function Header() {
         {meState.uid ? (
           <LoginIcon photoURL={meState.photoURL} />
         ) : (
-          <UnLoginIcon photoURL="img/header_user_icon.png" />
+          <UnLoginIcon photoURL="/img/header_user_icon.png" />
         )}
       </Flex>
     </>

@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { React, useEffect } from "react";
+import Router from "next/router";
 
 export function Connection() {
   async function checkNetwork() {
@@ -7,7 +8,7 @@ export function Connection() {
       if (window.ethereum.networkVersion !== "80001") {
         alert("Mumbai Test Network に接続してください!");
       } else {
-        console.log("Mumbai に接続されています");
+        Router.push("/");
       }
     } catch (error) {
       console.log(error);
@@ -26,7 +27,8 @@ export function Connection() {
         if (accounts.length !== 0) {
           const account = accounts[0];
           console.log("Found an authorized account:", account);
-          checkNetwork();
+          //ネットワークが正しい時はメインページに移動
+          if (window.ethereum.networkVersion == "80001") Router.push("/");
         } else {
           console.log("No authorized account found");
         }
@@ -44,7 +46,9 @@ export function Connection() {
         return;
       }
       checkIfWalletIsConnected();
-      const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
       console.log("Connected", accounts[0]);
       checkNetwork();
     } catch (error) {
@@ -56,5 +60,12 @@ export function Connection() {
     checkIfWalletIsConnected();
   }, []);
   //TODO: NFTを保有しているかのコントラクトを作る必要がありそう
-  return <Button onClick={connectWalletAction}>Connect Wallet</Button>;
+  return (
+    <Button
+      color="#ffffff"
+      bgGradient="linear-gradient(180deg, #5B59C1 0%, #8133CF 100%)"
+      onClick={connectWalletAction}>
+      MetaMaskと連携する
+    </Button>
+  );
 }
