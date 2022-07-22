@@ -19,3 +19,16 @@ a {
 .bg-gradation{
   background: linear-gradient(180deg, #5B59C1 0%, #8133CF 100%);
 }
+
+.summary{
+  padding: 50px;
+  height: 200px;
+  text-align: center;
+  &-title{
+    color: #ffffff;
+    font-weight: 700;
+  }
+  &-search{
+    margin-top: 50px;
+  }
+}

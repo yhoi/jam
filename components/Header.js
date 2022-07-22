@@ -32,7 +32,7 @@ function LoginIcon({ photoURL }) {
       </MenuButton>
       <MenuList>
         <MenuItem>
-          <a href="">プロフィール</a>
+          <a href="/collector/{}">プロフィール</a>
         </MenuItem>
         <MenuItem
           onClick={async () => {
@@ -84,7 +84,7 @@ export default function Header() {
           <Link
             className={styles["header-content__link"]}
             color="#808080"
-            href="">
+            href="/collector">
             コレクター
           </Link>
           <Button
