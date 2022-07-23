@@ -11,6 +11,10 @@ import UploadAudio from "../components/Organisms/UploadAudio";
 import styles from "../styles/layout/create.module.scss";
 
 export default function create() {
+  const [testData, setTestForm] = useState({
+    image: null,
+    audio: null,
+  });
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -22,13 +26,7 @@ export default function create() {
   });
 
   async function createNFTPage() {
-    if (
-      [
-        formData.title.length,
-        formData.description.length,
-        formData.audioURL.length,
-      ].includes(0)
-    ) {
+    if ([formData.title.length, formData.description.length, formData.audioURL.length].includes(0)) {
       // FIXME: 入力箇所を赤く強調する
       alert("未入力の箇所はあります");
       return;
@@ -56,15 +54,13 @@ export default function create() {
       <Box className={`${styles["create"]}`}>
         <Text className={`${styles["create-title"]}`}>NFTを出品する</Text>
         {formData.audioURL.length != 0 ? (
-          <NFTForm formData={formData} setFormData={setFormData} />
+          <NFTForm formData={formData} setFormData={setFormData} testData={testData} setTestForm={setTestForm} />
         ) : (
-          <UploadAudio formData={formData} setFormData={setFormData} />
+          <UploadAudio formData={formData} setFormData={setFormData} testData={testData} setTestForm={setTestForm} />
         )}
         {formData.audioURL.length != 0 && (
           <Box className={`${styles["create-footer"]}`}>
-            <Button
-              className={`${styles["create-footer__btn"]}`}
-              onClick={createNFTPage}>
+            <Button className={`${styles["create-footer__btn"]}`} onClick={createNFTPage}>
               NFTを出品する
             </Button>
           </Box>

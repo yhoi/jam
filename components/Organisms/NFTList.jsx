@@ -1,16 +1,7 @@
 import Link from "next/link";
 import { firestore } from "../../firebase/firebase";
 import { Box, Image, HStack } from "@chakra-ui/react";
-import {
-  Timestamp,
-  doc,
-  getDoc,
-  collection,
-  query,
-  orderBy,
-  getDocs,
-  onSnapshot,
-} from "firebase/firestore";
+import { Timestamp, doc, getDoc, collection, query, orderBy, getDocs, onSnapshot } from "firebase/firestore";
 import Router from "../../node_modules/next/router";
 import { useContext, useState, useEffect } from "react";
 import { async } from "@firebase/util";
@@ -42,6 +33,7 @@ export default function NFTList({ nftDocs }) {
         return nft;
       })
     );
+    console.log(nftList);
     setNftList(nftList);
   }
 

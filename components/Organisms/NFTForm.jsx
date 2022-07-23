@@ -1,16 +1,4 @@
-import {
-  Box,
-  Button,
-  Text,
-  Image,
-  Input,
-  SimpleGrid,
-  Textarea,
-  Radio,
-  RadioGroup,
-  Stack,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Button, Text, Image, Input, SimpleGrid, Textarea, Radio, RadioGroup, Stack, Flex } from "@chakra-ui/react";
 import { useDropzone } from "react-dropzone";
 import { useCallback, useState } from "react";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
@@ -19,16 +7,18 @@ import styles from "../../styles/layout/create.module.scss";
 import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-export default function NFTForm({ formData, setFormData }) {
+export default function NFTForm({ formData, setFormData, testData, setTestForm }) {
   const onDrop = useCallback((acceptedFiles) => {
     console.log("onDrop:", acceptedFiles);
     if (acceptedFiles[0]) {
       const originalFileName = acceptedFiles[0].name;
       const fileObj = acceptedFiles[0];
-      const storageRef = ref(
-        storage,
-        `images/${auth.currentUser.uid}/${originalFileName}`
-      );
+
+      console.log(fileObj);
+      console.log("これが型:", typeof fileObj);
+      setTestForm({ ...testData, image: fileObj });
+
+      const storageRef = ref(storage, `images/${auth.currentUser.uid}/${originalFileName}`);
       console.log(storageRef);
       // TODO: コンポーネントにてawaitの処理に変更
       uploadBytes(storageRef, fileObj).then((snapshot) => {
@@ -47,16 +37,7 @@ export default function NFTForm({ formData, setFormData }) {
   });
 
   function DisplayAudio() {
-    return (
-      <ReactPlayer
-        config={{ file: { attributes: { controlsList: "nodownload" } } }}
-        width="100%"
-        height="50px"
-        controls={true}
-        volume={1}
-        url={formData.audioURL}
-      />
-    );
+    return <ReactPlayer config={{ file: { attributes: { controlsList: "nodownload" } } }} width="100%" height="50px" controls={true} volume={1} url={formData.audioURL} />;
   }
 
   return (
@@ -65,11 +46,7 @@ export default function NFTForm({ formData, setFormData }) {
         {formData.imageURL ? (
           <Image src={formData.imageURL} />
         ) : (
-          <Box
-            className={`${styles["create-dropbox"]}`}
-            {...getRootProps()}
-            w="300px"
-            h="300px">
+          <Box className={`${styles["create-dropbox"]}`} {...getRootProps()} w="300px" h="300px">
             <input {...getInputProps()} />
             <Text>背景画像の追加</Text>
           </Box>
@@ -102,7 +79,8 @@ export default function NFTForm({ formData, setFormData }) {
             value={formData.salesStatus}
             onChange={(e) => {
               setFormData({ ...formData, salesStatus: e });
-            }}>
+            }}
+          >
             <Stack>
               <Radio value="sell">販売中</Radio>
               <Radio value="notsell">販売終了</Radio>
