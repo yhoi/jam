@@ -9,7 +9,7 @@ export default function collector() {
   return (
     <>
       <Box className="summary bg-gradation">
-        <Text className="summary-title">NFT</Text>
+        <Text className="summary-title">コレクター</Text>
         <Input
           bg="#ffffff"
           width="30%"

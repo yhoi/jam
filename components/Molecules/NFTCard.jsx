@@ -10,7 +10,7 @@ export default function NFTCard({ nft }) {
         shadow="md"
         width="240px"
         cursor="pointer"
-        onClick={(e) => Router.push(`nft/${nft.id}`)}>
+        onClick={(e) => Router.push(`/nft/${nft.id}`)}>
         <Image src={nft.imageURL} />
         <Box>
           <Text>{nft.title}</Text>
