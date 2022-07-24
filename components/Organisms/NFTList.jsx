@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { firestore } from "../../firebase/firebase";
-import { Box, Image, HStack } from "@chakra-ui/react";
+import { Grid, Image, HStack, SimpleGrid } from "@chakra-ui/react";
 import {
   Timestamp,
   doc,
@@ -51,9 +51,15 @@ export default function NFTList({ nftDocs }) {
 
   return (
     <>
-      {nftList.map((nft) => {
-        return <NFTCard nft={nft} />;
-      })}
+      <SimpleGrid
+        bgColor="#F9F9FA"
+        minChildWidth="240px"
+        spacing="16px"
+        padding="60px 60px">
+        {nftList.map((nft) => {
+          return <NFTCard nft={nft} />;
+        })}
+      </SimpleGrid>
     </>
   );
 }
