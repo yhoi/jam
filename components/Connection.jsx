@@ -6,7 +6,15 @@ export function Connection() {
   async function checkNetwork() {
     try {
       if (window.ethereum.networkVersion !== "80001") {
-        alert("Mumbai Test Network に接続してください!");
+        await ethereum.request({
+          jsonrpc: "2.0",
+          method: "wallet_switchEthereumChain",
+          params: [
+            {
+              chainId: "0x13881",
+            },
+          ],
+        });
       } else {
         Router.push("/");
       }
@@ -61,10 +69,7 @@ export function Connection() {
   }, []);
   //TODO: NFTを保有しているかのコントラクトを作る必要がありそう
   return (
-    <Button
-      color="#ffffff"
-      bgGradient="linear-gradient(180deg, #5B59C1 0%, #8133CF 100%)"
-      onClick={connectWalletAction}>
+    <Button color="#ffffff" bgGradient="linear-gradient(180deg, #5B59C1 0%, #8133CF 100%)" onClick={connectWalletAction}>
       MetaMaskと連携する
     </Button>
   );
