@@ -48,7 +48,7 @@ export default function CollectorList({ collectorDocs }) {
     <>
       <SimpleGrid
         bgColor="#F9F9FA"
-        minChildWidth="240px"
+        minChildWidth="192px"
         spacing="16px"
         padding="60px 60px">
         {collectorList.map((collector) => {
