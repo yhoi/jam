@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { firestore } from "../../firebase/firebase";
-import { Box, Image, HStack } from "@chakra-ui/react";
+import { Box, Image, HStack, SimpleGrid } from "@chakra-ui/react";
 import {
   Timestamp,
   doc,
@@ -46,9 +46,15 @@ export default function CollectorList({ collectorDocs }) {
 
   return (
     <>
-      {collectorList.map((collector) => {
-        return <CollectorCard collector={collector} />;
-      })}
+      <SimpleGrid
+        bgColor="#F9F9FA"
+        minChildWidth="240px"
+        spacing="16px"
+        padding="60px 60px">
+        {collectorList.map((collector) => {
+          return <CollectorCard collector={collector} />;
+        })}
+      </SimpleGrid>
     </>
   );
 }
