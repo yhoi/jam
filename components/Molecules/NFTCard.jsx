@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Router from "next/router";
 
-export default function NFTCard({ nft }) {
+export default function NFTCard({ nft, index }) {
   if (nft == null) return null;
 
   return (

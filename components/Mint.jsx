@@ -23,6 +23,7 @@ export default function Mint({ nft }) {
           1,
           nft.title,
           nft.imageURL,
+          nft.audioURL,
           royalty
         );
         await mintTxn.wait();

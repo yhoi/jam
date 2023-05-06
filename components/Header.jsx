@@ -83,7 +83,7 @@ export default function Header() {
           </Link>
           <Link
             className={styles["header-content__link"]}
-            color="#808080"
+            color="#fff"
             href="/collector">
             コレクター
           </Link>

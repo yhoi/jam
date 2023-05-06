@@ -8,7 +8,7 @@ import {
   getDocs,
   collection,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
+// import { async } from "@firebase/util";
 
 export const useNftList = () => {
   const [nftDocs, setNftDocs] = useState([]);
