@@ -56,8 +56,8 @@ export default function NFTList({ nftDocs }) {
         minChildWidth="240px"
         spacing="16px"
         padding="60px 60px">
-        {nftList.map((nft) => {
-          return <NFTCard nft={nft} />;
+        {nftList.map((nft, index) => {
+          return <NFTCard nft={nft} key={index} />;
         })}
       </SimpleGrid>
     </>
